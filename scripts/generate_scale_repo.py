@@ -134,7 +134,7 @@ def import_range(start, end, branch, author, committer):
             stream.write(os.urandom(FILE_SIZE))
             done = index + 1
             if done % 5000 == 0:
-                stream.write(("progress files %d\n" % done).encode())
+                # progress is not a file command; inside a commit it ends the commit.
                 stream.flush()
                 print(
                     "PROGRESS files=%d elapsed_s=%d free_gb=%.1f"
